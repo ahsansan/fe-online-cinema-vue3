@@ -7,7 +7,8 @@
       <h2>{{ film.title }}</h2>
       <h4 class="detail-genre">{{ film.category?.name }}</h4>
       <p class="detail-harga">
-        {{ convertToRupiah(199000) }} -- {{ film.price }}
+        <!-- {{ convertToRupiah(199000) }} -- {{ film.price }} -->
+        {{ convertToRupiah(film.price) }}
       </p>
       <p className="detail-desk">{{ film.description }}</p>
       <iframe
@@ -51,9 +52,11 @@ export default {
   methods: {
     convertToRupiah(angka) {
       let rupiah = "";
-      const angkarev = angka.toString().split("").reverse().join("");
-      for (var i = 0; i < angkarev.length; i++) {
-        if (i % 3 === 0) rupiah += angkarev.substr(i, 3) + ".";
+      if (angka) {
+        const angkarev = angka.toString().split("").reverse().join("");
+        for (var i = 0; i < angkarev.length; i++) {
+          if (i % 3 === 0) rupiah += angkarev.substr(i, 3) + ".";
+        }
       }
 
       return (
