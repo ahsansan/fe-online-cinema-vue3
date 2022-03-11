@@ -10,15 +10,35 @@
     </div>
     <div>
       <nav>
-        <router-link class="link-menu-class" to="/about">About</router-link>
+        <div v-if="store.state.isLogin === true">
+          <router-link class="link-menu-class" to="/about">About</router-link> |
+          <button @click="handleLogout" class="link-menu-class">Logout</button>
+        </div>
+        <div v-else>
+          <router-link class="link-menu-class" to="/about">About</router-link> |
+          <router-link class="link-menu-class" to="/auth">Auth</router-link>
+        </div>
       </nav>
     </div>
   </div>
 </template>
 
 <script>
+import { useStore } from "vuex";
 export default {
   name: "HeaderComponent",
+  setup() {
+    const store = useStore();
+
+    const handleLogout = () => {
+      store.commit("LOGOUT_USER");
+    };
+
+    return {
+      store,
+      handleLogout,
+    };
+  },
 };
 </script>
 

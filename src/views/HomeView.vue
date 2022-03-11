@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { API } from "@/config/api";
 import { onMounted, ref } from "vue";
 
 export default {
@@ -76,15 +76,14 @@ export default {
   setup() {
     let films = ref([]);
 
-    onMounted(() => {
-      axios
-        .get("http://localhost:5000/api/cinema/v1/films")
-        .then((result) => {
-          films.value = result.data.data.film;
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
+    onMounted(async () => {
+      try {
+        const resp = await API.get("/films");
+
+        films.value = resp.data.data.film;
+      } catch (err) {
+        console.log(err.response);
+      }
     });
 
     return {
@@ -120,7 +119,6 @@ export default {
 
 <style>
 .container-home {
-  background-color: black;
   padding-bottom: 50px;
   min-height: 88vh;
   text-align: left;
@@ -151,7 +149,7 @@ export default {
 }
 
 .detail-highlight {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .highlight-film {
