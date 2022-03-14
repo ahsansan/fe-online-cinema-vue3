@@ -76,7 +76,7 @@ export default {
   setup() {
     let films = ref([]);
 
-    onMounted(async () => {
+    const getFilms = async () => {
       try {
         const resp = await API.get("/films");
 
@@ -84,6 +84,10 @@ export default {
       } catch (err) {
         console.log(err.response);
       }
+    };
+
+    onMounted(() => {
+      getFilms();
     });
 
     return {
@@ -130,28 +134,23 @@ export default {
   display: flex;
   flex-direction: row;
 }
-
 .list-films {
   flex: 1;
 }
-
 .img-film {
   width: 180px;
   height: 250px;
   border-radius: 5px;
 }
-
 .container-utama {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 40px;
 }
-
 .detail-highlight {
   margin-top: 10px;
 }
-
 .highlight-film {
   width: 1081px;
   height: 437px;
@@ -159,7 +158,6 @@ export default {
   background: linear-gradient(90deg, #121212 0%, rgba(18, 18, 18, 0) 47.02%);
   border-radius: 5px;
 }
-
 .button-buy-highlight {
   margin-top: 10px;
   padding: 10px 20px;
@@ -168,36 +166,35 @@ export default {
   color: white;
   border: none;
 }
-
 .button-buy-highlight:hover {
   background-color: #be0552;
 }
-
 .judul-film-highlight {
   font-family: Avenir;
   font-size: 48px;
   font-weight: 900;
   color: #a52620;
+  text-shadow: 1px 1px #fff;
 }
-
 .deskripsi-film-highlight {
   font-family: Avenir;
   font-size: 14px;
   font-weight: 400;
+  text-shadow: 1px 1px #000;
 }
-
 .harga-film-highlight {
   color: #cd2e71;
   font-family: Avenir;
   font-size: 18px;
   font-weight: 800;
+  text-shadow: 1px 1px #fff;
 }
-
 .kategori-film-highlight {
   color: black;
   font-family: Avenir;
   font-size: 18px;
   font-weight: 900;
+  text-shadow: 1px 1px #fff;
 }
 
 @media screen and (max-width: 600px) {

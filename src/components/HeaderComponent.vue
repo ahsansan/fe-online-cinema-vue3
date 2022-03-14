@@ -9,29 +9,36 @@
       /></router-link>
     </div>
     <div>
-      <nav>
-        <div v-if="store.state.isLogin === true">
-          <router-link class="link-menu-class" to="/about">About</router-link> |
-          <button @click="handleLogout" class="link-menu-class">Logout</button>
-        </div>
-        <div v-else>
+      <div v-if="store.state.isLogin === true">
+        <MenuComponent />
+      </div>
+      <div v-else>
+        <nav>
           <router-link class="link-menu-class" to="/about">About</router-link> |
           <router-link class="link-menu-class" to="/auth">Auth</router-link>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import MenuComponent from "./MenuComponent.vue";
+
 export default {
   name: "HeaderComponent",
+  components: {
+    MenuComponent,
+  },
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const handleLogout = () => {
       store.commit("LOGOUT_USER");
+      router.push("/");
     };
 
     return {

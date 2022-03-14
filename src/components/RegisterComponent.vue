@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="validation" class="text-danger">
+    <div v-if="validation" class="text-danger mb-1">
       {{ validation.message }}
     </div>
     <h2>Register</h2>
@@ -52,12 +52,12 @@
 
 <script>
 import { API } from "@/config/api";
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import Swal from "sweetalert2";
 
 export default {
   name: "RegisterComponent",
-  setup() {
+  setup(props, context) {
     const form = reactive({
       fullName: "",
       phone: "",
@@ -84,7 +84,13 @@ export default {
         form.email = "";
         form.password = "";
 
+        const loginGas = computed(() => {
+          return true;
+        });
+
         Swal.fire("Good job!", "Registration Success, please login", "success");
+
+        context.emit("updateLogin", loginGas.value);
       } catch (error) {
         validation.value = error.response.data;
         console.log(error);

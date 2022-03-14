@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="validation" class="text-danger">
+    <div v-if="validation" class="text-danger mb-1">
       {{ validation.message }}
     </div>
     <h2>Login</h2>

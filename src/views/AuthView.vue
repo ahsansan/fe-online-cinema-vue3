@@ -19,7 +19,7 @@
         <LoginComponent />
       </div>
       <div v-else>
-        <RegisterComponent />
+        <RegisterComponent :toLogin="loginForm" @updateLogin="updateLogin" />
       </div>
     </div>
   </div>
@@ -57,10 +57,15 @@ export default {
       loginForm.value = true;
     };
 
+    const updateLogin = (val) => {
+      loginForm.value = val;
+    };
+
     return {
       loginForm,
       switchLogin,
       switchRegister,
+      updateLogin,
     };
   },
 };
