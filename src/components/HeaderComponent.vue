@@ -14,8 +14,7 @@
       </div>
       <div v-else>
         <nav>
-          <router-link class="link-menu-class" to="/about">About</router-link> |
-          <router-link class="link-menu-class" to="/auth">Auth</router-link>
+          <router-link class="link-menu-class" to="/auth">Login</router-link>
         </nav>
       </div>
     </div>
@@ -61,14 +60,16 @@ export default {
   padding: 20px;
 }
 .link-menu-class {
-  background-color: orange;
-  color: #000;
-  padding: 10px;
-  text-decoration: none;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #cd2e71;
   border-radius: 5px;
+  color: white;
+  border: none;
+  text-decoration: none;
 }
 .link-menu-class:hover {
-  background-color: rgb(255, 221, 159);
-  color: #000;
+  background-color: #be0552;
+  color: white;
 }
 </style>

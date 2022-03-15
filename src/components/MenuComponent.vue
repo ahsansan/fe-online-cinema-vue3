@@ -15,49 +15,44 @@
             alt="Profile"
             height="40"
             width="40"
-            style="border-radius: 50%"
+            style="border-radius: 50%; border: 2px solid #cd2e71"
           />
         </button>
-        <div
-          class="dropdown-menu bg-secondary"
-          aria-labelledby="dropdownMenuButton"
-        >
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
           <button
             @click="router.push('/add-film')"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Add Film
-          </button>
-          <button
-            @click="router.push('/all-films')"
-            class="dropdown-item bg-secondary text-light"
-          >
-            All Films
+            <img src="@/assets/addfilm.png" className="icon-plus" />
+            <strong>Add Film</strong>
           </button>
           <button
             @click="router.push('/categories')"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Categories
+            <strong>Categories</strong>
+          </button>
+          <button
+            @click="router.push('/all-films')"
+            class="dropdown-item bg-dark text-light"
+          >
+            <img src="@/assets/clapperboard.svg" className="icon-plus" />
+            <strong>All Films</strong>
           </button>
           <button
             @click="router.push('/transactions')"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Transactions
+            <img src="@/assets/transaction.svg" className="icon-plus" />
+            <strong>Transactions</strong>
           </button>
-          <div class="dropdown-divider"></div>
-          <button
-            @click="router.push('/about')"
-            class="dropdown-item bg-secondary text-light"
-          >
-            About Us
-          </button>
+          <div class="dropdown-divider" style="background-color: white"></div>
           <button
             @click="handleLogout"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Logout
+            <img src="@/assets/logout.svg" className="icon-plus" />
+            <strong>Logout</strong>
           </button>
         </div>
       </div>
@@ -77,37 +72,31 @@
             alt="Profile"
             height="40"
             width="40"
-            style="border-radius: 50%"
+            style="border-radius: 50%; border: 2px solid #cd2e71"
           />
         </button>
-        <div
-          class="dropdown-menu bg-secondary"
-          aria-labelledby="dropdownMenuButton"
-        >
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
           <button
             @click="router.push('/profile')"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Profile
+            <img src="@/assets/user.svg" className="icon-plus" />
+            <strong>Profile</strong>
           </button>
           <button
             @click="router.push('/my-list')"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            My List Film
+            <img src="@/assets/clapperboard.svg" className="icon-plus" />
+            <strong>My List Film</strong>
           </button>
-          <div class="dropdown-divider"></div>
-          <button
-            @click="router.push('/about')"
-            class="dropdown-item bg-secondary text-light"
-          >
-            About Us
-          </button>
+          <div class="dropdown-divider" style="background-color: white"></div>
           <button
             @click="handleLogout"
-            class="dropdown-item bg-secondary text-light"
+            class="dropdown-item bg-dark text-light"
           >
-            Logout
+            <img src="@/assets/logout.svg" className="icon-plus" />
+            <strong>Logout</strong>
           </button>
         </div>
       </div>
@@ -142,6 +131,10 @@ export default {
 <style>
 .container-menu {
   margin-top: 15px;
-  margin-right: 15px;
+  margin-right: 25px;
+}
+.icon-plus {
+  height: 25px;
+  margin-right: 10px;
 }
 </style>
