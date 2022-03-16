@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div v-if="validation" class="text-danger mb-1">
-      {{ validation.message }}
+    <div v-if="validation.message" class="text-danger mb-1">
+      <div class="alert alert-danger" role="alert">
+        {{ validation.message }}
+      </div>
     </div>
     <h2>Register</h2>
     <form @submit.prevent="handleOnSubmit">

@@ -58,8 +58,10 @@
                 <span style="color: #cd2e71">Online</span> : 0981312323
               </h3>
               <h3 class="mb-3">{{ title }}</h3>
-              <div v-if="validation" class="text-danger mb-1">
-                {{ validation.message }}
+              <div v-if="status.message" class="mb-1">
+                <div class="alert alert-danger" variant="danger">
+                  {{ status.message }}
+                </div>
               </div>
               <form @submit.prevent="handleOnSubmit">
                 <div>
@@ -70,6 +72,7 @@
                     v-model="form.account"
                     placeholder="Input your account number"
                     class="input-account-number"
+                    required
                   />
                 </div>
                 <div v-if="preview">
@@ -134,7 +137,7 @@ export default {
       transferProof: [],
     });
     const preview = ref("");
-    const validation = ref([]);
+    const status = ref({});
     const successStatus = ref(false);
 
     const previewFile = (e) => {
@@ -173,14 +176,18 @@ export default {
         preview.value = "";
         successStatus.value = true;
       } catch (error) {
-        validation.value = error.response;
         console.log(error);
+        status.value = {
+          message:
+            "Something went wrong with the server, please try again later",
+          error: true,
+        };
       }
     };
 
     return {
       form,
-      validation,
+      status,
       preview,
       previewFile,
       successStatus,

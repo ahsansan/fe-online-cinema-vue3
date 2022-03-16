@@ -23,6 +23,11 @@ const routes = [
     component: () => import("../views/ProfileView.vue"),
   },
   {
+    path: "/edit-profile",
+    name: "editprofile",
+    component: () => import("../views/EditProfileView.vue"),
+  },
+  {
     path: "/my-list",
     name: "mylist",
     component: () => import("../views/MyFilmView.vue"),
