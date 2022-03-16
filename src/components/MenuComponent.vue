@@ -27,19 +27,6 @@
             <strong>Add Film</strong>
           </button>
           <button
-            @click="router.push('/categories')"
-            class="dropdown-item bg-dark text-light"
-          >
-            <strong>Categories</strong>
-          </button>
-          <button
-            @click="router.push('/all-films')"
-            class="dropdown-item bg-dark text-light"
-          >
-            <img src="@/assets/clapperboard.svg" className="icon-plus" />
-            <strong>All Films</strong>
-          </button>
-          <button
             @click="router.push('/transactions')"
             class="dropdown-item bg-dark text-light"
           >

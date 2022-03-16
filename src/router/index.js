@@ -47,7 +47,15 @@ const routes = [
     name: "addfilm",
     component: () => import("../views/AddFilmView.vue"),
     meta: {
-      requiresAdmin: true,
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/transactions",
+    name: "transactions",
+    component: () => import("../views/TransactionsView.vue"),
+    meta: {
+      requiresAuth: true,
     },
   },
 ];
