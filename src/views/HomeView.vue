@@ -1,7 +1,7 @@
 <template>
   <div class="container-home" fluid>
     <div class="container-utama" v-if="films.length">
-      <div>
+      <div data-aos="fade-left">
         <div
           class="highlight-film"
           v-bind:style="{
@@ -39,9 +39,12 @@
       </div>
     </div>
     <div v-else>
-      <p>Film Kosong</p>
+      <p data-aos="fade-left">Film Kosong</p>
     </div>
-    <div>
+    <div
+      class="d-flex justify-content-center align-items-center flex-column"
+      data-aos="fade-right"
+    >
       <h2
         style="
           color: white;
@@ -54,9 +57,10 @@
       </h2>
       <div class="container-list-film row">
         <div
-          class="list-films col-md-2 mb-2"
+          class="list-films col-md-2 col"
           v-for="film in films"
           :key="film.id"
+          style="margin: 10px"
         >
           <router-link :to="{ name: 'detail', params: { id: film.id } }">
             <img :src="film.tumbnail" :alt="film.title" class="img-film" />
@@ -69,6 +73,7 @@
 
 <script>
 import { API } from "@/config/api";
+import AOS from "aos";
 import { onMounted, ref } from "vue";
 
 export default {
@@ -88,6 +93,7 @@ export default {
 
     onMounted(() => {
       getFilms();
+      AOS.init();
     });
 
     return {
@@ -129,8 +135,10 @@ export default {
 }
 .container-list-film {
   max-width: 90%;
-  margin-left: 50px !important;
+  padding-left: 5%;
+  padding-right: 5%;
   margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: row;
 }
@@ -208,11 +216,11 @@ export default {
   }
   .list-films {
     flex: 1;
-    width: 50%;
+    width: 90%;
     padding-bottom: 10px;
   }
   .img-film {
-    width: 80%;
+    width: 300px;
     height: 100%;
   }
   .highlight-film {

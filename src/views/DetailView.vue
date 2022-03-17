@@ -262,6 +262,8 @@ export default {
   }
   .tumbnail-film-detail {
     margin-left: 20px;
+    width: 300px;
+    height: 100%;
   }
   .detail-judul-harga {
     flex-direction: column;
